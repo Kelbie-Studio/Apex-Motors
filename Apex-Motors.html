@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apex Motors — Luxury Car Dealership, Lagos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #0A0A0B;
+      --black2: #121214;
+      --black3: #1A1A1D;
+      --chrome: #C8C9CC;
+      --chrome2: #E4E5E8;
+      --red: #C81E2C;
+      --red2: #E0303F;
+      --gray: #6E6E73;
+      --white: #F2F2F0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 56px;
+      background: rgba(10, 10, 11, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(200, 201, 204, 0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo .dot {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--chrome2);
+    }
+
+    .nav-cta {
+      padding: 10px 24px;
+      background: var(--red);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .3s;
+    }
+
+    .nav-cta:hover {
+      background: var(--red2);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 140px 56px 0;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 65%;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 10, 11, .55) 0%, rgba(10, 10, 11, .25) 35%, rgba(10, 10, 11, .85) 85%, rgba(10, 10, 11, 1) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red2);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--red2);
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 700;
+      line-height: 0.98;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 24px;
+      max-width: 820px;
+    }
+
+    .hero h1 span {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--chrome);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: rgba(242, 242, 240, .55);
+      max-width: 440px;
+      margin-bottom: 44px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .btn-red {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 38px;
+      background: var(--red);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .3s, transform .2s;
+    }
+
+    .btn-red:hover {
+      background: var(--red2);
+      transform: translateY(-2px);
+    }
+
+    .btn-chrome-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 38px;
+      border: 1px solid rgba(242, 242, 240, .2);
+      color: var(--white);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color .3s;
+    }
+
+    .btn-chrome-ghost:hover {
+      border-color: var(--chrome);
+      color: var(--chrome2);
+    }
+
+    /* HERO STATS STRIP */
+    .hero-stats {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(242, 242, 240, .08);
+    }
+
+    .hero-stat {
+      padding: 28px 0 36px;
+      border-right: 1px solid rgba(242, 242, 240, .08);
+    }
+
+    .hero-stat:last-child {
+      border-right: none;
+    }
+
+    .hero-stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 6px;
+    }
+
+    /* SHARED */
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--red2);
+      margin-bottom: 16px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      width: 22px;
+      height: 1px;
+      background: var(--red2);
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(34px, 4.5vw, 56px);
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--gray);
+      max-width: 420px;
+      margin-bottom: 56px;
+    }
+
+    /* INVENTORY */
+    .inventory {
+      padding: 100px 56px;
+      background: var(--black);
+    }
+
+    .inventory-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+    }
+
+    .filter-tab {
+      padding: 9px 20px;
+      border: 1px solid rgba(242, 242, 240, .12);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      cursor: pointer;
+    }
+
+    .filter-tab.active {
+      background: var(--red);
+      color: var(--white);
+      border-color: var(--red);
+    }
+
+    .car-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(242, 242, 240, .06);
+      border: 1px solid rgba(242, 242, 240, .06);
+    }
+
+    .car-card {
+      background: var(--black2);
+      transition: background .3s;
+    }
+
+    .car-card:hover {
+      background: var(--black3);
+    }
+
+    .car-img-wrap {
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .car-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .car-card:hover .car-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .car-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--red);
+      padding: 5px 12px;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .car-info {
+      padding: 26px 28px;
+    }
+
+    .car-make {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 6px;
+    }
+
+    .car-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 21px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .car-specs {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .car-spec {
+      font-size: 11px;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .car-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid rgba(242, 242, 240, .07);
+    }
+
+    .car-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .car-link {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red2);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap .2s;
+    }
+
+    .car-link::after {
+      content: '→';
+    }
+
+    .car-link:hover {
+      gap: 10px;
+    }
+
+    /* BRANDS STRIP */
+    .brands {
+      padding: 56px;
+      background: var(--black2);
+      border-top: 1px solid rgba(242, 242, 240, .06);
+      border-bottom: 1px solid rgba(242, 242, 240, .06);
+    }
+
+    .brands-label {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .brands-row {
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+
+    .brand-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: rgba(242, 242, 240, .25);
+      letter-spacing: 0.04em;
+      transition: color .3s;
+    }
+
+    .brand-name:hover {
+      color: var(--chrome2);
+    }
+
+    /* SHOWCASE / FULL BLEED */
+    .showcase {
+      position: relative;
+      height: 560px;
+      overflow: hidden;
+    }
+
+    .showcase-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+    }
+
+    .showcase-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(10, 10, 11, .88) 0%, rgba(10, 10, 11, .35) 55%, transparent 100%);
+      display: flex;
+      align-items: center;
+    }
+
+    .showcase-content {
+      padding: 0 56px;
+      max-width: 540px;
+    }
+
+    .showcase-content .section-eyebrow {
+      color: var(--red2);
+    }
+
+    .showcase-content h2 {
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .showcase-content p {
+      font-size: 14px;
+      color: rgba(242, 242, 240, .6);
+      line-height: 1.85;
+      margin-bottom: 32px;
+    }
+
+    /* WHY US */
+    .why {
+      padding: 100px 56px;
+      background: var(--black);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(242, 242, 240, .07);
+    }
+
+    .why-item {
+      padding: 44px 36px;
+      border-right: 1px solid rgba(242, 242, 240, .07);
+    }
+
+    .why-item:last-child {
+      border-right: none;
+    }
+
+    .why-icon {
+      width: 34px;
+      height: 34px;
+      color: var(--red2);
+      margin-bottom: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.4;
+    }
+
+    .why-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .why-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.85;
+    }
+
+    /* FINANCING CTA */
+    .financing {
+      padding: 100px 56px;
+      background: var(--black3);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .financing-img-wrap {
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .financing-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .financing-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: rgba(10, 10, 11, .9);
+      backdrop-filter: blur(6px);
+      padding: 14px 20px;
+      border-left: 2px solid var(--red);
+    }
+
+    .financing-badge-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .financing-badge-label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    .financing-text h2 {
+      margin-bottom: 18px;
+    }
+
+    .financing-text p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+
+    .financing-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .financing-list-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--white);
+    }
+
+    .financing-list-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--red2);
+      flex-shrink: 0;
+    }
+
+    /* CONTACT */
+    .contact-cta {
+      padding: 100px 56px;
+      background: var(--black);
+      text-align: center;
+      border-top: 1px solid rgba(242, 242, 240, .06);
+    }
+
+    .contact-cta h2 {
+      margin-bottom: 16px;
+    }
+
+    .contact-cta p {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 44px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .contact-details {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding-top: 40px;
+      border-top: 1px solid rgba(242, 242, 240, .07);
+    }
+
+    .contact-detail-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 6px;
+    }
+
+    .contact-detail-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      color: var(--white);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black2);
+      padding: 32px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-top: 1px solid rgba(242, 242, 240, .06);
+    }
+
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-logo .dot {
+      color: var(--red);
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: var(--gray);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    .footer-links a {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--red2);
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 18px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 110px 24px 0;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-stat:nth-child(2) {
+        border-right: none;
+      }
+
+      .inventory,
+      .why,
+      .financing,
+      .contact-cta {
+        padding: 72px 24px;
+      }
+
+      .viewer-section {
+        padding: 64px 24px 48px;
+      }
+
+      .viewer-sub {
+        text-align: left;
+        max-width: 100%;
+      }
+
+      .viewer-stage {
+        height: 380px;
+      }
+
+      .inventory-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .car-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(242, 242, 240, .07);
+      }
+
+      .financing {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .showcase-content {
+        padding: 0 24px;
+        max-width: 100%;
+      }
+
+      .brands {
+        padding: 40px 24px;
+      }
+
+      .brands-row {
+        gap: 28px;
+      }
+
+      footer {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">APEX<span class="dot">.</span>MOTORS</a>
+    <ul class="nav-links">
+      <li><a href="#inventory">Inventory</a></li>
+      <li><a href="#why">Why Apex</a></li>
+      <li><a href="#financing">Financing</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a test drive</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-img"
+      src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=85"
+      alt="Apex Motors luxury showroom" loading="eager" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal">Luxury Auto Dealership · Lagos, Nigeria</div>
+      <h1 class="reveal">Engineered for<br />those who <span>arrive first.</span></h1>
+      <p class="hero-sub reveal">Apex Motors curates the finest luxury and performance vehicles in Nigeria —
+        hand-inspected, fully certified, and delivered with white-glove service.</p>
+      <div class="hero-ctas reveal">
+        <a href="#inventory" class="btn-red">View inventory</a>
+        <a href="#contact" class="btn-chrome-ghost">Book a test drive</a>
+      </div>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="hero-stat">
+        <div class="hero-stat-num">120+</div>
+        <div class="hero-stat-label">Vehicles sold</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">15+</div>
+        <div class="hero-stat-label">Luxury brands</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Certified pre-owned</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">24/7</div>
+        <div class="hero-stat-label">Concierge support</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVENTORY -->
+  <section id="inventory" class="inventory">
+    <div class="inventory-header reveal">
+      <div>
+        <div class="section-eyebrow">Available now</div>
+        <h2>Current inventory.</h2>
+      </div>
+      <div class="filter-tabs">
+        <div class="filter-tab active">All</div>
+        <div class="filter-tab">Sedans</div>
+        <div class="filter-tab">SUVs</div>
+        <div class="filter-tab">Sports</div>
+      </div>
+    </div>
+
+    <div class="car-grid reveal">
+      <div class="car-card">
+        <div class="car-img-wrap">
+          <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=700&q=85"
+            alt="Mercedes-AMG GT — Black" loading="lazy" />
+          <div class="car-tag">Certified</div>
+        </div>
+        <div class="car-info">
+          <div class="car-make">Mercedes-Benz</div>
+          <div class="car-name">AMG GT 63s</div>
+          <div class="car-specs">
+            <span class="car-spec">2023</span>
+            <span class="car-spec">4.2k km</span>
+            <span class="car-spec">Petrol</span>
+          </div>
+          <div class="car-footer">
+            <div class="car-price">₦145,000,000</div>
+            <a href="#contact" class="car-link">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card">
+        <div class="car-img-wrap">
+          <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=700&q=85"
+            alt="Range Rover Sport — Black" loading="lazy" />
+          <div class="car-tag">New arrival</div>
+        </div>
+        <div class="car-info">
+          <div class="car-make">Land Rover</div>
+          <div class="car-name">Range Rover Sport</div>
+          <div class="car-specs">
+            <span class="car-spec">2024</span>
+            <span class="car-spec">1.1k km</span>
+            <span class="car-spec">Diesel</span>
+          </div>
+          <div class="car-footer">
+            <div class="car-price">₦168,000,000</div>
+            <a href="#contact" class="car-link">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card">
+        <div class="car-img-wrap">
+          <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=700&q=85"
+            alt="BMW M5 — Silver" loading="lazy" />
+          <div class="car-tag">Certified</div>
+        </div>
+        <div class="car-info">
+          <div class="car-make">BMW</div>
+          <div class="car-name">M5 Competition</div>
+          <div class="car-specs">
+            <span class="car-spec">2022</span>
+            <span class="car-spec">8.6k km</span>
+            <span class="car-spec">Petrol</span>
+          </div>
+          <div class="car-footer">
+            <div class="car-price">₦98,500,000</div>
+            <a href="#contact" class="car-link">Enquire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <div class="brands">
+    <div class="brands-label reveal">Brands we carry</div>
+    <div class="brands-row reveal">
+      <div class="brand-name">Mercedes-Benz</div>
+      <div class="brand-name">BMW</div>
+      <div class="brand-name">Range Rover</div>
+      <div class="brand-name">Porsche</div>
+      <div class="brand-name">Lexus</div>
+      <div class="brand-name">Bentley</div>
+    </div>
+  </div>
+
+  <!-- SHOWCASE -->
+  <section class="showcase">
+    <img class="showcase-img"
+      src="https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=1800&q=85"
+      alt="Apex Motors featured vehicle" loading="lazy" />
+    <div class="showcase-overlay">
+      <div class="showcase-content reveal">
+        <div class="section-eyebrow">Featured this month</div>
+        <h2>The Porsche<br />Taycan Turbo S.</h2>
+        <p>Our most requested vehicle this quarter — fully electric, 0-100 in 2.8 seconds, and finished in a bespoke
+          matte black wrap. Available for immediate test drive.</p>
+        <a href="#contact" class="btn-red">Schedule a viewing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why" class="why">
+    <div class="section-eyebrow reveal">Why Apex Motors</div>
+    <h2 class="reveal">Built on trust,<br />backed by inspection.</h2>
+    <p class="section-sub reveal">Every vehicle that enters our showroom passes a rigorous 120-point inspection before
+      it ever reaches a customer.</p>
+    <div class="why-grid reveal">
+      <div class="why-item">
+        <svg class="why-icon" viewBox="0 0 34 34">
+          <path d="M17 3L29 8V16C29 24 23 29 17 31C11 29 5 24 5 16V8L17 3Z" />
+          <path d="M12 17L16 21L23 13" />
+        </svg>
+        <div class="why-title">120-point inspection</div>
+        <p class="why-desc">Every vehicle is mechanically and cosmetically certified by our in-house technicians before
+          listing.</p>
+      </div>
+      <div class="why-item">
+        <svg class="why-icon" viewBox="0 0 34 34">
+          <rect x="5" y="11" width="24" height="16" rx="2" />
+          <path d="M11 11V8C11 5.8 12.8 4 15 4H19C21.2 4 23 5.8 23 8V11" />
+        </svg>
+        <div class="why-title">Verified ownership history</div>
+        <p class="why-desc">Full documentation, customs clearance, and ownership chain provided with every purchase — no
+          surprises.</p>
+      </div>
+      <div class="why-item">
+        <svg class="why-icon" viewBox="0 0 34 34">
+          <path d="M17 3C9 3 3 9 3 17C3 25 9 31 17 31C25 31 31 25 31 17" />
+          <path d="M17 11V17L22 20" />
+        </svg>
+        <div class="why-title">White-glove delivery</div>
+        <p class="why-desc">From paperwork to plate registration — we handle the entire process so you can simply enjoy
+          the drive.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINANCING -->
+  <section id="financing" class="financing">
+    <div class="financing-img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=800&q=85"
+        alt="Apex Motors financing" loading="lazy" />
+      <div class="financing-badge">
+        <div class="financing-badge-num">48hr</div>
+        <div class="financing-badge-label">Average approval time</div>
+      </div>
+    </div>
+    <div class="financing-text reveal">
+      <div class="section-eyebrow">Own it sooner</div>
+      <h2>Flexible financing,<br />made simple.</h2>
+      <p>We've partnered with leading Nigerian banks and auto-finance providers to make luxury ownership accessible —
+        whether you're buying outright or financing over time.</p>
+      <div class="financing-list">
+        <div class="financing-list-item">Flexible 12 – 48 month payment plans</div>
+        <div class="financing-list-item">Trade-in valuation on your current vehicle</div>
+        <div class="financing-list-item">Dedicated finance advisor for every client</div>
+      </div>
+      <a href="#contact" class="btn-red">Get pre-approved</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-cta">
+    <div class="section-eyebrow reveal" style="justify-content: center;">Visit the showroom</div>
+    <h2 class="reveal">Ready to find<br />your next car?</h2>
+    <p class="reveal">Book a test drive or speak with our sales team directly. We respond within the hour during
+      business days.</p>
+    <div class="contact-ctas reveal">
+      <a href="https://wa.me/2348012345678" class="btn-red">WhatsApp us</a>
+      <a href="mailto:sales@apexmotors.ng" class="btn-chrome-ghost">Send an email</a>
+    </div>
+    <div class="contact-details reveal">
+      <div>
+        <div class="contact-detail-label">Showroom</div>
+        <div class="contact-detail-val">12 Ozumba Mbadiwe Ave, Victoria Island</div>
+      </div>
+      <div>
+        <div class="contact-detail-label">Hours</div>
+        <div class="contact-detail-val">Mon – Sat, 9am – 7pm</div>
+      </div>
+      <div>
+        <div class="contact-detail-label">Phone</div>
+        <div class="contact-detail-val">+234 801 234 5678</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">APEX<span class="dot">.</span>MOTORS</div>
+    <div class="footer-copy">© 2025 Apex Motors, Lagos. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Email</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    (function () {
+      const stage = document.getElementById('viewerStage');
+      const fallback = document.getElementById('viewerFallback');
+      if (!stage) return;
+
+      // Feature-detect WebGL; fall back to static image if unavailable
+      function hasWebGL() {
+        try {
+          const c = document.createElement('canvas');
+          return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
+        } catch (e) { return false; }
+      }
+      if (!hasWebGL() || typeof THREE === 'undefined') {
+        if (fallback) fallback.style.display = 'flex';
+        return;
+      }
+
+      const COLORS = {
+        body: 0x0c0c0e,
+        glass: 0x05070a,
+        chrome: 0xd8d9dc,
+        rubber: 0x070707,
+        floor: 0x0e0e10,
+        red: 0xC81E2C,
+        white: 0xf2f2f0
+      };
+
+      let width = stage.clientWidth;
+      let height = stage.clientHeight;
+
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.Fog(0x121214, 9, 22);
+
+      const camera = new THREE.PerspectiveCamera(35, width / height, 0.1, 100);
+      camera.position.set(5.2, 2.4, 6.4);
+      camera.lookAt(0, 0.5, 0);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(width, height);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      stage.insertBefore(renderer.domElement, stage.firstChild);
+
+      // ---- Lighting (studio 3-point setup) ----
+      const ambient = new THREE.AmbientLight(0x404048, 0.55);
+      scene.add(ambient);
+
+      const keyLight = new THREE.DirectionalLight(0xffffff, 1.5);
+      keyLight.position.set(5, 8, 5);
+      keyLight.castShadow = true;
+      keyLight.shadow.mapSize.set(1024, 1024);
+      keyLight.shadow.camera.left = -6;
+      keyLight.shadow.camera.right = 6;
+      keyLight.shadow.camera.top = 6;
+      keyLight.shadow.camera.bottom = -6;
+      keyLight.shadow.camera.near = 1;
+      keyLight.shadow.camera.far = 20;
+      scene.add(keyLight);
+
+      const fillLight = new THREE.DirectionalLight(0x8899ff, 0.25);
+      fillLight.position.set(-6, 4, -3);
+      scene.add(fillLight);
+
+      const rimLight = new THREE.PointLight(COLORS.red, 1.4, 14);
+      rimLight.position.set(-3, 1.5, -4);
+      scene.add(rimLight);
+
+      const topLight = new THREE.PointLight(0xffffff, 0.7, 12);
+      topLight.position.set(0, 5, 1);
+      scene.add(topLight);
+
+      // ---- Floor ----
+      const floorGeo = new THREE.CircleGeometry(7, 64);
+      const floorMat = new THREE.MeshStandardMaterial({ color: COLORS.floor, metalness: 0.55, roughness: 0.35 });
+      const floor = new THREE.Mesh(floorGeo, floorMat);
+      floor.rotation.x = -Math.PI / 2;
+      floor.receiveShadow = true;
+      scene.add(floor);
+
+      // Soft contact-shadow disc under the car (canvas radial gradient as alpha map)
+      const shadowCanvas = document.createElement('canvas');
+      shadowCanvas.width = 256; shadowCanvas.height = 256;
+      const sctx = shadowCanvas.getContext('2d');
+      const grad = sctx.createRadialGradient(128, 128, 10, 128, 128, 128);
+      grad.addColorStop(0, 'rgba(0,0,0,0.55)');
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      sctx.fillStyle = grad;
+      sctx.fillRect(0, 0, 256, 256);
+      const shadowTex = new THREE.CanvasTexture(shadowCanvas);
+      const shadowDisc = new THREE.Mesh(
+        new THREE.PlaneGeometry(5.6, 3.4),
+        new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false })
+      );
+      shadowDisc.rotation.x = -Math.PI / 2;
+      shadowDisc.position.y = 0.012;
+      scene.add(shadowDisc);
+
+      // ---- Car group ----
+      const car = new THREE.Group();
+
+      const bodyMat = new THREE.MeshStandardMaterial({ color: COLORS.body, metalness: 0.75, roughness: 0.28 });
+      const glassMat = new THREE.MeshStandardMaterial({ color: COLORS.glass, metalness: 0.3, roughness: 0.12 });
+      const chromeMat = new THREE.MeshStandardMaterial({ color: COLORS.chrome, metalness: 1, roughness: 0.08 });
+      const rubberMat = new THREE.MeshStandardMaterial({ color: COLORS.rubber, metalness: 0.1, roughness: 0.9 });
+      const headlightMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.9, roughness: 0.2 });
+      const taillightMat = new THREE.MeshStandardMaterial({ color: COLORS.red, emissive: COLORS.red, emissiveIntensity: 1.1, roughness: 0.25 });
+
+      // Lower chassis
+      const chassis = new THREE.Mesh(new THREE.BoxGeometry(4.3, 0.42, 1.9), bodyMat);
+      chassis.position.y = 0.42;
+      chassis.castShadow = true;
+      car.add(chassis);
+
+      // Cabin (wedge profile via ExtrudeGeometry)
+      const cabinShape = new THREE.Shape();
+      cabinShape.moveTo(-1.35, 0);
+      cabinShape.lineTo(-0.75, 0.58);
+      cabinShape.quadraticCurveTo(-0.2, 0.7, 0.55, 0.66);
+      cabinShape.lineTo(1.15, 0.3);
+      cabinShape.lineTo(1.45, 0);
+      cabinShape.lineTo(-1.35, 0);
+      const cabinGeo = new THREE.ExtrudeGeometry(cabinShape, { depth: 1.62, bevelEnabled: false });
+      cabinGeo.translate(0, 0, -0.81);
+      const cabin = new THREE.Mesh(cabinGeo, glassMat);
+      cabin.rotation.y = Math.PI / 2;
+      cabin.position.set(-0.15, 0.63, 0);
+      cabin.castShadow = true;
+      car.add(cabin);
+
+      // A slim chrome beltline trim where chassis meets cabin
+      const beltline = new THREE.Mesh(new THREE.BoxGeometry(3.6, 0.04, 1.95), chromeMat);
+      beltline.position.y = 0.63;
+      car.add(beltline);
+
+      // Hood
+      const hood = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.1, 1.78), bodyMat);
+      hood.position.set(1.7, 0.62, 0);
+      hood.rotation.z = 0.05;
+      hood.castShadow = true;
+      car.add(hood);
+
+      // Trunk
+      const trunk = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.1, 1.78), bodyMat);
+      trunk.position.set(-1.85, 0.6, 0);
+      trunk.rotation.z = -0.04;
+      trunk.castShadow = true;
+      car.add(trunk);
+
+      // Front grille
+      const grille = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.22, 1.3), chromeMat);
+      grille.position.set(2.28, 0.46, 0);
+      car.add(grille);
+
+      // Front splitter
+      const splitter = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.06, 1.8), chromeMat);
+      splitter.position.set(2.3, 0.2, 0);
+      car.add(splitter);
+
+      // Headlights
+      [0.78, -0.78].forEach((z) => {
+        const hl = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.12, 0.32), headlightMat);
+        hl.position.set(2.26, 0.55, z);
+        car.add(hl);
+      });
+
+      // Taillights
+      [0.82, -0.82].forEach((z) => {
+        const tl = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.14, 0.36), taillightMat);
+        tl.position.set(-2.27, 0.55, z);
+        car.add(tl);
+      });
+
+      // Side mirror
+      [0.95, -0.95].forEach((z) => {
+        const m = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.08, 0.08), bodyMat);
+        m.position.set(0.55, 0.78, z);
+        car.add(m);
+      });
+
+      // Wheels + chrome rims
+      const wheelPositions = [
+        [1.5, 0.85], [1.5, -0.85],
+        [-1.55, 0.85], [-1.55, -0.85]
+      ];
+      wheelPositions.forEach(([x, z]) => {
+        const tire = new THREE.Mesh(new THREE.CylinderGeometry(0.46, 0.46, 0.32, 28), rubberMat);
+        tire.rotation.x = Math.PI / 2;
+        tire.position.set(x, 0.46, z);
+        tire.castShadow = true;
+        car.add(tire);
+
+        const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.27, 0.27, 0.34, 20), chromeMat);
+        rim.rotation.x = Math.PI / 2;
+        rim.position.set(x, 0.46, z);
+        car.add(rim);
+
+        const hub = new THREE.Mesh(new THREE.SphereGeometry(0.05, 12, 12), chromeMat);
+        hub.position.set(x, 0.46, z + (z > 0 ? 0.18 : -0.18));
+        car.add(hub);
+      });
+
+      car.position.y = 0;
+      scene.add(car);
+
+      const baseY = 0;
+
+      // ---- Resize handling ----
+      function resize() {
+        width = stage.clientWidth;
+        height = stage.clientHeight;
+        if (width === 0 || height === 0) return;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+      }
+      window.addEventListener('resize', resize);
+
+      // ---- Drag-to-rotate (pointer events) ----
+      let isDragging = false;
+      let prevX = 0;
+      let autoRotate = true;
+      let velocity = 0.004;
+
+      function onPointerDown(e) {
+        isDragging = true;
+        autoRotate = false;
+        stage.classList.add('dragging');
+        prevX = (e.touches ? e.touches[0].clientX : e.clientX);
+      }
+      function onPointerMove(e) {
+        if (!isDragging) return;
+        const x = (e.touches ? e.touches[0].clientX : e.clientX);
+        const deltaX = x - prevX;
+        car.rotation.y += deltaX * 0.008;
+        velocity = deltaX * 0.0006;
+        prevX = x;
+      }
+      function onPointerUp() {
+        isDragging = false;
+        stage.classList.remove('dragging');
+        setTimeout(() => { if (!isDragging) autoRotate = true; }, 1800);
+      }
+
+      stage.addEventListener('mousedown', onPointerDown);
+      window.addEventListener('mousemove', onPointerMove);
+      window.addEventListener('mouseup', onPointerUp);
+      stage.addEventListener('touchstart', onPointerDown, { passive: true });
+      window.addEventListener('touchmove', onPointerMove, { passive: true });
+      window.addEventListener('touchend', onPointerUp);
+
+      // ---- Render loop ----
+      function animate(t) {
+        requestAnimationFrame(animate);
+        if (autoRotate) {
+          car.rotation.y += 0.0028;
+        } else if (!isDragging) {
+          car.rotation.y += velocity;
+          velocity *= 0.94;
+        }
+        car.position.y = baseY + Math.sin(t * 0.0011) * 0.025;
+        renderer.render(scene, camera);
+      }
+
+      resize();
+      requestAnimationFrame(animate);
+
+      // Re-check size once layout settles (fonts/images loading can shift it)
+      setTimeout(resize, 400);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('visible')); return; }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 60); obs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.08 });
+      els.forEach(e => obs.observe(e));
+
+      // Filter tabs visual toggle (demo only, no real filtering)
+      document.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>
